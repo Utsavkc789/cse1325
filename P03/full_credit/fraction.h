@@ -18,20 +18,25 @@ public:
         reduce();
     }
  
-    static int gcd(int n, int d)
+    static int GCD(int n, int d)
     {
-        return d == 0 ? n : gcd(d, n % d);
+        return d == 0 ? n : GCD(d, n % d);
     }
  
     void reduce()
     {
         if (_numerator != 0 && _denominator != 0)
-        {
-            int gcd{ Fraction::gcd(_numerator, _denominator) };
-            _numerator /= gcd;
-            _denominator /= gcd;
+        {   
+            if(_denominator<0){
+                _numerator=-_numerator;
+                _denominator=-_denominator;
+                int GCD{ Fraction::GCD(_numerator, _denominator) };
+                _numerator /= GCD;
+                _denominator /= GCD;
         }
     }
+    }
+    
     
     Fraction operator-();
     Fraction operator/(const Fraction& rhs);

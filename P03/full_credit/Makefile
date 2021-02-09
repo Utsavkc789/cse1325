@@ -10,7 +10,7 @@ fraction.o: fraction.cpp *.h
 	-$(CXX) $(CXXFLAGS) -c fraction.cpp -o fraction.o
 
 test.o: test.cpp *.h
-	-$(CXX) $(CXXFLAGS) -c test.cpp -o test.o
+	$(CXX) $(CXXFLAGS) -c test.cpp -o test.o
     
 test: test.o  fraction.o
 	$(CXX) $(CXXFLAGS) test.o fraction.o -o test

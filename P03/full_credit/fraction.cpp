@@ -42,17 +42,10 @@ bool operator!=(const Fraction& lhs, const Fraction& rhs){
 } 
 
 std::istream& operator >> (std::istream& ist, Fraction &m)
-{
-    //std::regex integer{"-?\\d+/-?\\d+"};
-    //if(std::regex_match(ist,integer)){
+{ 
     ist >> m._numerator;
     ist.ignore(std::numeric_limits<std::streamsize>::max(), '/');
     ist >> m._denominator;
-    //}
-    
-    //else{
-    //throw std::runtime_error{"Bad Fraction read"};
-    //}
     
     return ist;
 }
