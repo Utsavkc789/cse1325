@@ -31,10 +31,10 @@ int main() {
         cards.push_back(card8);
         
     std::cout << "Select the number of term for each defination (-1 to exit)\n" << std::endl;
-    a={"",a.options()};
+    ans=a.options();
     
-    for(int i=0;i<a.options().size();i++){
-    std::cout << a[i]._options << std::endl;
+    for(int i=0;i<ans.size();i++){
+    std::cout << ans[i] << std::endl;
     }
     print_output(ans);
 
