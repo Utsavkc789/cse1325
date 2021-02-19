@@ -3,53 +3,66 @@
 
 std::string Card::attempt(std::string response){
     int _response=stoi(response);
-    switch(_response){
     
-    case 0:
+    if(_response==0){
     if(this->_answer=="Inheritance"){
           return "Correct!";}
-          
-    case 1:
+         }
+         
+    if(_response==1){     
     if(this->_answer=="Primitive type"){
           return "Correct!";}
+         }
     
-    case 2:
+    if(_response==2){
     if(this->_answer=="Enumerated type"){
           return "Correct!";}
+         }
     
-    case 3:
+    if(_response==3){
     if(this->_answer=="Class"){
           return "Correct!";}
+         }
     
-    case 4:
+    if(_response==4){
     if(this->_answer=="Instance"){
           return "Correct!";}
+         }
     
-    case 5:
+    if(_response==5){
     if(this->_answer=="Object"){
           return "Correct!";}
+         }
     
-    case 6:
+    if(_response==6){
     if(this->_answer=="Variable"){
           return "Correct!";}
+         }
    
-    case 7:
+    if(_response==7){
     if(this->_answer=="Operator"){
-          return "Correct!";}     
+          return "Correct!";}
+         }    
     
     
-    case 8:
+    if(_response==8){
     if(this->_answer=="Getter"){
-          return "Correct!";}     
+          return "Correct!";}
+         }    
     
     
-    case 9:
+    if(_response==9){
     if(this->_answer=="Setter"){
-          return "Correct!";}     
-    }
-    
+          return "Correct!";}
+         }
+         
+    for(int i=0;i<this->_answer.size();i++){
+        this->_answer[i]=toupper(this->_answer[i]);
+        }
+        
     return "X - Correct answer was "+this->_answer +"."+"\n";
-
+       
+ 
 }
 
 std::ostream& operator<<(std::ostream& ost,Card& m){

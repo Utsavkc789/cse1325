@@ -2,7 +2,7 @@
 #include <cstring>
 #include <vector>
 #include <cstdlib>
-#include <ctime>
+
 
 int main() {
     int random_number;
@@ -58,16 +58,15 @@ int main() {
     }
     
     std::cout << "" << std::endl;
-    srand(time(0));
-    random_number=(rand()%9);
-    std::cout << cards[random_number];
+    card0=a.deal();
+    std::cout << card0;
     std::cin >> input;
     
     if(stoi(input)==-1){
         break;
         }
                
-    std::string response=cards[random_number].attempt(input);
+    std::string response=card0.attempt(input);
     std::cout << response << std::endl;
     std::cout << "" << std::endl;
     }
