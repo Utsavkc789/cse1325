@@ -32,7 +32,7 @@ std::string Card::attempt(std::string response){
     case 6:
     if(this->_answer=="Variable"){
           return "Correct!";}
-    
+   
     case 7:
     if(this->_answer=="Operator"){
           return "Correct!";}     
@@ -52,12 +52,12 @@ std::string Card::attempt(std::string response){
 
 }
 
-
 std::ostream& operator<<(std::ostream& ost,Card& m){
-    
     ost << m._question <<"? ";
-    
     return ost;
-}
-
-
+    }
+    
+    
+    
+    
+    

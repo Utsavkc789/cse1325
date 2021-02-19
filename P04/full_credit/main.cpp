@@ -36,7 +36,7 @@ int main() {
     Card card7{"A short string representing a mathematical, logical, or machine control action","Operator"};
     Card card8{"A method that returns the value of a private variable","Getter"};
     Card card9{"A method that changes the value of a private variable","Setter "};
-        
+    
         cards.push_back(card0);
         cards.push_back(card1);
         cards.push_back(card2);
@@ -48,13 +48,11 @@ int main() {
         cards.push_back(card8);
         cards.push_back(card9);
         
-        
     std::cout << "Select the number of term for each defination (-1 to exit)\n" << std::endl;
     ans=a.options();
+
     
-    int counter=0;
-    
-    while(counter!=-1){
+    while(true){
     for(int j=0;j<ans.size();j++){
         std::cout << j << ") " << ans[j] <<std::endl;
     }

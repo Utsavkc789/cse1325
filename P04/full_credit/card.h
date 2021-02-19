@@ -14,5 +14,3 @@ class Card{
     std::string attempt(std::string response);
     friend std::ostream& operator<<(std::ostream& ost,Card& m);
 };
-
-
