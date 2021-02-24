@@ -52,7 +52,7 @@ std::string Card::attempt(std::string response){
          }    
          
     else if(_response==9){
-    if(this->_answer=="Setter"){
+    if(this->_answer=="a"){
           return "Correct!";}
           }
              

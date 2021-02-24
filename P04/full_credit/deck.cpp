@@ -25,7 +25,7 @@ Card Deck::deal(){
         }
         
    else{
-       if(_next_card<=9){
+       if(_next_card<9){
             _next_card=_next_card+1;
             return _cards[_next_card];
             }
