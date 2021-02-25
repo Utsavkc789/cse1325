@@ -65,7 +65,7 @@ int main() {
         break;
         }
                
-    std::string response=_card.attempt(input);
+    std::string response=_card.attempt(ans[stoi(input)]);
     std::cout << response << std::endl;
     std::cout << "" << std::endl;
     }
