@@ -1,6 +1,3 @@
-#ifndef __DECK_H
-#define __DECK_H
-
 #include <iostream>
 #include <vector>
 #include <string>
@@ -20,5 +17,3 @@ class Deck{
     Card deal();
     
 };
-
-#endif
