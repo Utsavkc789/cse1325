@@ -5,7 +5,7 @@ Student::Student(std::string name,std::string  email,int grade): Person(name,ema
         throw std::runtime_error{"Sorry! Invalid grade :/"};}}
 
 void Student::add_parent(Parent& parent){
-        _parents.push_back(new parent);}
+        _parents.push_back(new Parent(parent));}
     
 int Student::parents(){
         return _parents.size();}

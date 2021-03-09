@@ -11,7 +11,7 @@ class Student;
 
 class Parent: public Person{
     protected:
-        std::vector<Student*> _students;
+        std::vector<Student*> students;
         
     public:
         Parent(std::string name,std::string email);

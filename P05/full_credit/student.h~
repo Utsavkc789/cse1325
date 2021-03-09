@@ -8,8 +8,8 @@ class Parent;
 
 class Student: public Person{
     protected:
-        int _grade;
-        std::vector<Parent*> _parents;
+        int grade;
+        std::vector<Parent*> parents;
     
     public:
         Student(std::string name,std::string email,int grade);
