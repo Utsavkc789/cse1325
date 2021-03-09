@@ -7,9 +7,9 @@ std::string Person::to_string(){
         return _name;}
     
 std::string Person::full_info() const{
-        return _name + "(" +_email + ")";}
+        return _name + " ( " +_email + " )";}
 
-std::ostream& Person::operator<<(std::ostream& ost,const Person& person){
+std::ostream& operator<<(std::ostream& ost,const Person& person){
         ost << person._name;
         return ost;}
 

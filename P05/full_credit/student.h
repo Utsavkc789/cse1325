@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "person.h"
+#include <string>
 
 class Parent;
 

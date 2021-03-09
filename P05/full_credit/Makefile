@@ -1,8 +1,13 @@
 CXXFLAGS = --std=c++17
 
+all: smart
+
+debug:	CXXFLAGS += -g
+debug:	smart
+
 smart: main.o person.o student.o parent.o *.h
 	$(CXX) $(CXXFLAGS) main.o person.o student.o parent.o -o smart
-
+	
 main.o: main.cpp *.h
 	$(CXX) $(CXXFLAGS) -c main.cpp -o main.o
 
@@ -14,6 +19,7 @@ student: student.cpp *.h
 	
 parent: parent.cpp *.h
 	$(CXX) $(CXXFLAGS) -c parent.cpp -o parent.o
+	
 
 clean:
 	rm -f *.o *.gch *~ a.out smart
