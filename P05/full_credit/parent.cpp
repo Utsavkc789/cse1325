@@ -1,5 +1,6 @@
 #include "parent.h"
 #include <string>
+#include "student.h"
 
 Parent::Parent(std::string name,std::string email): Person(name,email){}
 

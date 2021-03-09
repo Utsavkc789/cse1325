@@ -1,4 +1,5 @@
 #include "student.h"
+#include "parent.h"
 
 Student::Student(std::string name,std::string email,int grade): Person(name,email),_grade{grade}{
     if(grade<1 || grade>12){
