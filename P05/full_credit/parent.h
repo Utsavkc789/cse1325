@@ -6,7 +6,9 @@
 #include <string>
 #include <vector>
 
-class Parent: public person{
+class Student;
+
+class Parent: public Person{
     protected:
         std::vector<Student*> students;
         
@@ -15,7 +17,7 @@ class Parent: public person{
         void add_student(Student& student);
         int students();
         Student& student(int index);
-        std::string full_info override();
+        std::string full_info() const override;
         };
 
 

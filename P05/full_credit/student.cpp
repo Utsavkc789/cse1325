@@ -13,6 +13,6 @@ int Student::parents(){
 Parent& Student::parent(int index){
         return *parents[index];}
     
-std::string Student::full_info override(){
+std::string Student::full_info const(){
           return "Student name: " + name(email) + "Grades: " + grades + "Parents name: " + parents.name;          
 }

@@ -3,6 +3,10 @@
 #define __PERSON_H
 
 
+#include <string>
+#include <ostream>
+
+
 class Person{
     
     protected:
