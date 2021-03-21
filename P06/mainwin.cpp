@@ -144,51 +144,8 @@ void Mainwin::on_quit_click(){
         }                     
 
 void Mainwin::show_data(){
-        std::string s =(   "Students    Parents");
+        std::string s =(   "Students" + _students[0].full_info() +   "Parents" + _parents[0].full_info());
         _display->set_markup(s);
         }
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
