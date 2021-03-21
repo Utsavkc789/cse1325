@@ -7,6 +7,7 @@
 #include "student.h"
 #include "parent.h"
 #include "school.h"
+#include "EntryDialog.h"
 
 class Mainwin : public Gtk::Window {
     public:
@@ -24,6 +25,7 @@ class Mainwin : public Gtk::Window {
         Gtk::Label *_display;
         std::vector<Student> _students;
         std::vector<Parent> _parents;
+        School *_school;
         void show_data();
    
 };
