@@ -9,6 +9,8 @@
 #include "school.h"
 #include "EntryDialog.h"
 
+class Person;
+
 class Mainwin : public Gtk::Window {
     public:
         Mainwin();
@@ -20,13 +22,16 @@ class Mainwin : public Gtk::Window {
         void on_new_parent_click();
         void on_student_parent_click();
         void on_quit_click();
+        std::string full_information();
         
     private:
         Gtk::Label *_display;
         std::vector<Student> _students;
         std::vector<Parent> _parents;
+        std::vector<Person*> _person;
         School *_school;
         void show_data();
+        
    
 };
 #endif 

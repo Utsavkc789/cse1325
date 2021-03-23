@@ -68,8 +68,10 @@ Mainwin::Mainwin(){
      _display->set_hexpand(true);
      _display->set_vexpand(true);
      vbox->add(*_display);
+     
+     
+     show_data();
        
-      show_data(); 
     // Make the box and everything in it visible
     vbox->show_all();
     
@@ -94,23 +96,24 @@ void Mainwin::on_new_student_click(){
         
         Glib::ustring _name,_email, _grade;
         EntryDialog entrydialog1{*this, "Student name?" , true};
-        entrydialog1.set_text("Enter text");
+        entrydialog1.set_text("");
         _name=entrydialog1.get_text();
         
         EntryDialog entrydialog2{*this, "Student email?" , true};
-        entrydialog1.set_text("Enter text");
+        entrydialog2.set_text("");
         _email=entrydialog1.get_text();
         
         EntryDialog entrydialog3{*this, "Student grade?" , true};
-        entrydialog1.set_text("Enter text");
+        entrydialog3.set_text("");
         //_grade=std::atoi(entrydialog1.get_text());
         
         entrydialog1.run();
         entrydialog2.run();
         entrydialog3.run();
         
-        //Student s{_name,_email,_grade};
-        //_students.push_back(s);
+        Student s{_name,_email,8}; _person.push_back(&s);
+        _students.push_back(s);
+        
          
         }
        
@@ -118,17 +121,17 @@ void Mainwin::on_new_student_click(){
 void Mainwin::on_new_parent_click(){
         std::string _name,_email;
         EntryDialog entrydialog1{*this, "Parent name?" , true};
-        entrydialog1.set_text("Enter text");
+        entrydialog1.set_text("");
         _name=entrydialog1.get_text();
         
         EntryDialog entrydialog2{*this, "Parent email?" , true};
-        entrydialog1.set_text("Enter text");
+        entrydialog2.set_text("");
         _email=entrydialog1.get_text();
         
         entrydialog1.run();
         entrydialog2.run();
         
-        Parent p{_name,_email};
+        Parent p{_name,_email}; _person.push_back(&p);
         _parents.push_back(p);
         
         }
@@ -144,8 +147,24 @@ void Mainwin::on_quit_click(){
         }                     
 
 void Mainwin::show_data(){
-        std::string s =(   "Students" + _students[0].full_info() +   "Parents" + _parents[0].full_info());
-        _display->set_markup(s);
+        int i; std::string s,p;
+
+        for(i=0; i < _students.size(); i++){
+            s+=_students[i].full_info() + "\n";
+            }
+            
+        for(i=0; i < _parents.size(); i++){
+            p+=_parents[i].full_info() + "\n";
+            }      
+            
+        std::string full = "Students    " + s + "    Parents" + p ;         
+        _display->set_markup(full);
+ 
         }
+        
+        
+
+
+        
         
 
