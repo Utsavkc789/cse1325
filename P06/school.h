@@ -10,8 +10,9 @@ class School{
         std::string _schoolname;
         
     public:
+        School(std::string schoolname);
         School();
-        
+        ~School();
         };
 
 #endif

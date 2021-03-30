@@ -1,4 +1,7 @@
 #include "mainwin.h"
+#include <string>
+#include <iostream>
+#include "EntryDialog.h"
 
 
 Mainwin::Mainwin(){
@@ -10,7 +13,7 @@ Mainwin::Mainwin(){
     Gtk::Box *vbox = Gtk::manage(new Gtk::VBox);
     add(*vbox);
 
-
+    //MENU//
     Gtk::MenuBar *menubar = Gtk::manage(new Gtk::MenuBar);
     vbox->pack_start(*menubar, Gtk::PACK_SHRINK, 0);
 
@@ -22,7 +25,7 @@ Mainwin::Mainwin(){
     menuitem_file->set_submenu(*filemenu);
 
     //APPENDING NEWSCHOOL TO FILE//
-    Gtk::MenuItem *menuitem_new = Gtk::manage(new Gtk::MenuItem("_NewSchool", true));
+    Gtk::MenuItem *menuitem_new = Gtk::manage(new Gtk::MenuItem("_New School", true));
     menuitem_new->signal_activate().connect([this] {this->on_new_school_click();});
     filemenu->append(*menuitem_new);
 
@@ -39,12 +42,12 @@ Mainwin::Mainwin(){
     menuitem_insert->set_submenu(*insertmenu);
     
     //APPENDING NEWSTUDENT TO INSERT//
-    Gtk::MenuItem *menuitem_newstudent = Gtk::manage(new Gtk::MenuItem("_NewStudent", true));
+    Gtk::MenuItem *menuitem_newstudent = Gtk::manage(new Gtk::MenuItem("_New Student", true));
     menuitem_newstudent ->signal_activate().connect([this] {this->on_new_student_click();});
     insertmenu->append(*menuitem_newstudent);
     
     //APPENDING NEWPARENT TO INSERT//
-    Gtk::MenuItem *menuitem_newparent = Gtk::manage(new Gtk::MenuItem("_NewParent", true));
+    Gtk::MenuItem *menuitem_newparent = Gtk::manage(new Gtk::MenuItem("_New Parent", true));
     menuitem_newparent->signal_activate().connect([this] {this->on_new_parent_click();});
     insertmenu->append(*menuitem_newparent);
 
@@ -60,9 +63,19 @@ Mainwin::Mainwin(){
     menuitem_stdtoprt->signal_activate().connect([this] {this->on_student_parent_click();});
     relatemenu->append(*menuitem_stdtoprt);
 
-
+     
+     _display = Gtk::manage(new Gtk::Label());
+     _display->set_hexpand(true);
+     _display->set_vexpand(true);
+     vbox->add(*_display);
+     
+     
+     show_data();
+       
     // Make the box and everything in it visible
     vbox->show_all();
+    
+    on_new_school_click();
 
 }
 
@@ -73,22 +86,58 @@ Mainwin::~Mainwin() { }
 // C A L L B A C K S //
 
 void Mainwin::on_new_school_click(){
-        //School = new School();
-        
+     //delete _school;
+     //_school = new School();
+           
      }
      
 
 void Mainwin::on_new_student_click(){
-        Gtk::MessageDialog{*this,"ouch!"}.run();
+        
+        Glib::ustring _name,_email, _grade;
+        EntryDialog entrydialog1{*this, "Student name?" , true};
+        entrydialog1.set_text("");
+        _name=entrydialog1.get_text();
+        
+        EntryDialog entrydialog2{*this, "Student email?" , true};
+        entrydialog2.set_text("");
+        _email=entrydialog1.get_text();
+        
+        EntryDialog entrydialog3{*this, "Student grade?" , true};
+        entrydialog3.set_text("");
+        //_grade=std::atoi(entrydialog1.get_text());
+        
+        entrydialog1.run();
+        entrydialog2.run();
+        entrydialog3.run();
+        
+        Student s{_name,_email,8}; _person.push_back(&s);
+        _students.push_back(s);
+        
+         
         }
        
  
 void Mainwin::on_new_parent_click(){
+        std::string _name,_email;
+        EntryDialog entrydialog1{*this, "Parent name?" , true};
+        entrydialog1.set_text("");
+        _name=entrydialog1.get_text();
+        
+        EntryDialog entrydialog2{*this, "Parent email?" , true};
+        entrydialog2.set_text("");
+        _email=entrydialog1.get_text();
+        
+        entrydialog1.run();
+        entrydialog2.run();
+        
+        Parent p{_name,_email}; _person.push_back(&p);
+        _parents.push_back(p);
+        
         }
         
         
 void Mainwin::on_student_parent_click(){
-        
         
         }
         
@@ -98,49 +147,24 @@ void Mainwin::on_quit_click(){
         }                     
 
 void Mainwin::show_data(){
-        
+        int i; std::string s,p;
+
+        for(i=0; i < _students.size(); i++){
+            s+=_students[i].full_info() + "\n";
+            }
+            
+        for(i=0; i < _parents.size(); i++){
+            p+=_parents[i].full_info() + "\n";
+            }      
+            
+        std::string full = "Students    " + s + "    Parents" + p ;         
+        _display->set_markup(full);
+ 
         }
+        
+        
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
+        
 
