@@ -189,7 +189,7 @@ Mainwin::Mainwin() {
 // ADDING SECTIONS //
   Gtk::Image* button9_image = Gtk::manage(new Gtk::Image{"button9.png"});
     button9 = Gtk::manage(new Gtk::ToolButton(*button9_image));
-    button9->set_tooltip_markup("all sections available");
+    button9->set_tooltip_markup("all courses available");
     button9->signal_clicked().connect([this] {this->on_new_section_click();});
     toolbar->append(* button9);    
     
