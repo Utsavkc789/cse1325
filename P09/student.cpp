@@ -38,7 +38,6 @@ void Student::add_parent(Parent& parent) {
 
 std::string Student::full_info() const {
     std::string info = Person::full_info() + " in grade " + std::to_string(_grade) + " - Parents: ";
-    std::string separator;
-    for(Parent* p : student) std::cout << *p << ' ';
+    for(Parent* p : _parents) std::cout << *p << ' ';
     return info;
 }

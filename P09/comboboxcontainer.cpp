@@ -3,13 +3,13 @@
 #include <iostream>
 #include <sstream>
 
-ComboboxContainer(T container){
-        std::stringstring s;
-        for(auto a : container){ 
-            s << a->to_string();
-            std::string output;
-            s >> output;
-            ComboboxText::append(output);
-            }
-            }
+ComboBoxContainer::ComboBoxContainer(T container):_container{new container}{
+        Gtk::ComboBoxText cbt_vector;
+        std::ostringstream ost;
+        for(auto c : container) {
+            ost.str("");
+            ost << *c;
+            cbt_vector.append(ost.str());
+        }
+        }
               

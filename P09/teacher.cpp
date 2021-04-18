@@ -9,6 +9,7 @@ Teacher::Teacher(std::istream& ist):Person(ist){
 void Teacher::save(std::ostream& ost){
        Person::save(ost);
         }
-std::string Teacher::full_info(){
-       Person::full_info();
+std::string Teacher::full_info() const{
+       std::string output = Person::full_info();
+       return output;
        }

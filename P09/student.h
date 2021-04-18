@@ -2,13 +2,20 @@
 #define __STUDENT_H
 
 #include "person.h"
-#include "parent.h"
 #include <vector>
 #include <map>
+
 
 class Parent;
 
 class Student : public Person {
+  
+  protected:
+    int _grade; 
+    typedef std::vector<Parent*> Parents;
+    Parents _parents;
+  
+  
   public:
     Student(std::string name, std::string email, int grade);
     Student(std::istream& ist);
@@ -21,12 +28,8 @@ class Student : public Person {
     typedef Parents::const_iterator const_iterator;
     iterator begin() {return _parents.begin();}
     iterator end() {return _parents.end();}
-    
      
-  protected:
-    int _grade;
-    typedef std::vector<Parent*> Parents;
-    Parents _parents;
+  
 };
 
 #endif

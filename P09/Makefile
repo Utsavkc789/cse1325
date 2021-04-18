@@ -6,11 +6,11 @@ all: smart
 debug: CXXFLAGS += -g
 debug: smart
 
-smart: main.o mainwin.o entrydialog.o person.o student.o parent.o section.o course.o subject.o semester.o *.h
-	$(CXX) $(CXXFLAGS) main.o mainwin.o entrydialog.o person.o student.o parent.o section.o course.o subject.o semester.o $(GTKFLAGS) -o smart
+smart: main.o mainwin.o entrydialog.o person.o student.o parent.o section.o course.o subject.o semester.o grade.o transcript.o teacher.o comboboxcontainer
+	$(CXX) $(CXXFLAGS) main.o mainwin.o entrydialog.o person.o student.o parent.o section.o course.o subject.o semester.o grade.o transcript.o teacher.o comboboxcontainer $(GTKFLAGS) -o smart
 
 test: test.o person.o student.o parent.o section.o course.o subject.o semester.o *.h
-	$(CXX) $(CXXFLAGS) test.o person.o student.o parent.o section.o course.o subject.o semester.o $(GTKFLAGS) -o test
+	$(CXX) $(CXXFLAGS) test.o person.o student.o parent.o section.o course.o subject.o semester.o grade.o transcript.o teacher.o $(GTKFLAGS) comboboxcontainer -o test
 
 
 main.o: main.cpp *.h
@@ -48,6 +48,19 @@ course.o: course.cpp *.h
 
 section.o: section.cpp *.h
 	$(CXX) $(CXXFLAGS) -c section.cpp -o section.o
+
+grade.o: grade.cpp *.h
+	$(CXX) $(CXXFLAGS) -c grade.cpp -o grade.o   
+
+transcript.o: transcript.cpp *.h
+	$(CXX) $(CXXFLAGS) -c transcript.cpp -o transcript.o 
+	
+teacher.o: teacher.cpp *.h
+	$(CXX) $(CXXFLAGS) -c teacher.cpp -o teacher.o 
+
+comboboxcontainer.o: comboboxcontainer.cpp *.h
+	$(CXX) $(CXXFLAGS) -c comboboxcontainer.cpp $(GTKFLAGS) -o comboboxcontainer.o 
+
 
 clean:
 	rm -f *.o *.gch *~ a.out smart 

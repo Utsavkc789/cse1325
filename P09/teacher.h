@@ -3,12 +3,12 @@
 
 #include "person.h"
 
-class Teacher{
+class Teacher : public Person{
         public:
             Teacher(std::string name, std::string email);
             Teacher(std::istream& ist);
             virtual void save(std::ostream& ost);
-            std::string full_info() override;
+            std::string full_info() const override;
             };
             
 #endif

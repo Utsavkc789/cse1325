@@ -7,16 +7,18 @@
 #include "teacher.h"
 
 class Section {
-  public:
-    Section(Course course, Semester semester, int year, Teacher& teacher); // Teacher teacher
-    Section(std::istream& ist);
-    void save(std::ostream& ost);
-    friend std::ostream& operator<<(std::ostream& ost, const Section& section);
   private:
     Course _course;
     Semester _semester;
     int _year;
-    Teacher& _teacher;
+    Teacher _teacher;
+  
+  public:
+    Section(Course course, Semester semester, int year, Teacher teacher); // Teacher teacher
+    Section(std::istream& ist);
+    void save(std::ostream& ost);
+    friend std::ostream& operator<<(std::ostream& ost, const Section& section);
+  
 };
 
 #endif

@@ -2,14 +2,13 @@
 #define __PERSON_H
 
 #include <iostream>
-#include <fstream> 
 
 class Person {
   public:
     Person(std::string name, std::string email);
-    std::string to_string() const;
     Person(std::istream& ist);
     virtual void save(std::ostream& ost);
+    std::string to_string() const;
     virtual std::string full_info() const;
     friend std::ostream& operator<<(std::ostream& ost, const Person& person);
   protected:

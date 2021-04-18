@@ -142,14 +142,14 @@ Mainwin::Mainwin() {
     
     //   T E A C H E R S //
     // Append teachers to the view menu //
-    Gtk::MenuItem *menuitem_view_teachers = Gtk::manage(new Gtk::MenuItem("_Sections", true));
-    menuitem_view_teachers->signal_activate().connect([this] {this->show_data(View::);});
+    Gtk::MenuItem *menuitem_view_teachers = Gtk::manage(new Gtk::MenuItem("_Teachers", true));
+    menuitem_view_teachers->signal_activate().connect([this] {this->show_data(View::TEACHERS);});
     viewmenu->append(*menuitem_view_teachers);
     
     //   T R A N S C R I P T S //
     // Append transcripts to the view menu //
-    Gtk::MenuItem *menuitem_view_transcript = Gtk::manage(new Gtk::MenuItem("_Sections", true));
-    menuitem_view_transcript->signal_activate().connect([this] {this->show_data(View::);});
+    Gtk::MenuItem *menuitem_view_transcript = Gtk::manage(new Gtk::MenuItem("_Transcripts", true));
+    menuitem_view_transcript->signal_activate().connect([this] {this->show_data(View::TRANSCRIPT);});
     viewmenu->append(*menuitem_view_transcript);
     
     //HELP//
@@ -314,7 +314,7 @@ void Mainwin::on_new_parent_click() {
 
 
 void Mainwin::on_student_parent_click() {  // Relate student and parent
-    Gtk::Dialog d{"Student", *this};
+   try{ Gtk::Dialog d{"Relate students and Parents", *this};
         auto vbox = d.get_content_area();
         
         Gtk::ComboBoxText cbt_students;
@@ -326,15 +326,12 @@ void Mainwin::on_student_parent_click() {  // Relate student and parent
         }
         vbox->pack_start(cbt_students);
         
-        Gtk::Dialog d1{"Parent", *this};
-        auto vbox = d1.get_content_area();
-        
         Gtk::ComboBoxText cbt_parents;
         std::ostringstream ost;
-        for(auto c : students) {
+        for(auto c : parents) {
             ost.str("");
             ost << *c;
-            cbt_students.append(ost.str());
+            cbt_parents.append(ost.str());
         }
         vbox->pack_start(cbt_parents);
 
@@ -346,15 +343,16 @@ void Mainwin::on_student_parent_click() {  // Relate student and parent
         Student& student = *students.at(cbt_students.get_active_row_number());
         Parent& parent = *parents.at(cbt_parents.get_active_row_number());
         
-        students.at(student)->add_parent(parent);
-        parents.at(parent)->add_student(student);
+        student.add_parent(parent);
+        parent.add_student(student);
+        }
         
-        
-    } catch(std::exception& e) {
+     catch(std::exception& e) {
         error("Invalid input",e);
     }
     show_data(View::STUDENTS);
 }
+
 
 
 void Mainwin::on_save_click() {
@@ -669,7 +667,7 @@ void Mainwin::on_new_course_click(){
         
         int year = std::stoi(m.get_text());
 
-        sections.push_back(new Section{course, semester, year});
+        //sections.push_back(new Section{course, semester, year});
     } catch(std::exception& e) {
         error("Invalid input",e);
     }
@@ -731,7 +729,7 @@ void Mainwin::on_easter_egg() {
             Semester semester = static_cast<Semester>(i);
             for(int j=0; j<=15; ++j) {
                 Course course = *courses.at(rand() % courses.size());
-                sections.push_back(new Section{course, semester, 2021});
+               // sections.push_back(new Section{course, semester, 2021});
             }
         }
         
