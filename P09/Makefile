@@ -6,7 +6,7 @@ all: smart
 debug: CXXFLAGS += -g
 debug: smart
 
-smart: main.o mainwin.o entrydialog.o person.o student.o parent.o section.o course.o subject.o semester.o grade.o transcript.o teacher.o 
+smart: main.o mainwin.o entrydialog.o person.o student.o parent.o section.o course.o subject.o semester.o grade.o transcript.o teacher.o *.h
 	$(CXX) $(CXXFLAGS) main.o mainwin.o entrydialog.o person.o student.o parent.o section.o course.o subject.o semester.o grade.o transcript.o teacher.o  $(GTKFLAGS) -o smart
 
 test: test.o person.o student.o parent.o section.o course.o subject.o semester.o rade.o transcript.o teacher.o   *.h

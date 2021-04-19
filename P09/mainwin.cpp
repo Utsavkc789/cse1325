@@ -338,22 +338,10 @@ void Mainwin::on_student_parent_click() {  // Relate student and parent
    try{ Gtk::Dialog d{"Relate students and Parents", *this};
         auto vbox = d.get_content_area();
         
-        Gtk::ComboBoxText cbt_students;
-        std::ostringstream oss;
-        for(auto c : students) {
-            oss.str("");
-            oss << *c;
-            cbt_students.append(oss.str());
-        }
+        ComboBoxContainer<std::vector<Student*>> cbt_students(students);
         vbox->pack_start(cbt_students);
         
-        Gtk::ComboBoxText cbt_parents;
-        std::ostringstream ost;
-        for(auto c : parents) {
-            ost.str("");
-            ost << *c;
-            cbt_parents.append(ost.str());
-        }
+        ComboBoxContainer<std::vector<Parent*>> cbt_parents(parents);
         vbox->pack_start(cbt_parents);
 
         d.add_button("Relate", 1);
@@ -623,13 +611,7 @@ void Mainwin::on_set_grade_click(){
         Gtk::Dialog d{"Assign Grade",*this};
         auto vbox = d.get_content_area();
         
-        Gtk::ComboBoxText cbt_transcripts;
-        std::ostringstream oss;
-        for(auto c : transcripts) {
-            oss.str("");
-            oss << *c;
-            cbt_transcripts.append(oss.str());
-        }
+        ComboBoxContainer<std::vector<Transcript*>>cbt_transcripts(transcripts);
         vbox->pack_start(cbt_transcripts);
         
         d.add_button("Cancel", 0);
@@ -719,13 +701,7 @@ void Mainwin::on_new_course_click(){
         Gtk::Dialog d{"Course", *this};
         auto vbox = d.get_content_area();
         
-        Gtk::ComboBoxText cbt_courses;
-        std::ostringstream oss;
-        for(auto c : courses) {
-            oss.str("");
-            oss << *c;
-            cbt_courses.append(oss.str());
-        }
+        ComboBoxContainer<std::vector<Course*>> cbt_courses(courses);
         vbox->pack_start(cbt_courses);
         
         d.add_button("Cancel", 0);
@@ -736,13 +712,7 @@ void Mainwin::on_new_course_click(){
         
         Gtk::Dialog d1{"Teacher",*this};
         vbox = d1.get_content_area();
-        Gtk::ComboBoxText cbt_teachers;
-        std::ostringstream ost;
-        for(auto c : teachers) {
-            oss.str("");
-            oss << *c;
-            cbt_teachers.append(oss.str());
-        }
+        ComboBoxContainer<std::vector<Teacher*>>cbt_teachers(teachers);
         vbox->pack_start(cbt_teachers);
         
         d1.add_button("Cancel", 0);
@@ -801,6 +771,9 @@ void Mainwin::on_easter_egg() {
           1, 5, 3, 12, // For students only
       };
       
+          
+      
+      
     try {
         for(int i=0; i<grades.size(); ++i)
             students.push_back(new Student{names[i], emails[i], grades[i]});
@@ -834,12 +807,13 @@ void Mainwin::on_easter_egg() {
                 Course course = *courses.at(rand() % courses.size());
                 Student student  = *students.at(rand() % students.size());
                 sections.push_back(new Section{course,semester,2021,teacher});
-                Section section = *sections.at(rand()% sections.size());         
+                Section section = *sections.at(rand()% sections.size());  
+                transcripts.push_back(new Transcript{student,section});     
             }
-            
-                
-          }  
-        
+  
+          } 
+          
+          
         show_data();
     } catch(std::exception& e) {
         error("Easter Egg failed", e);

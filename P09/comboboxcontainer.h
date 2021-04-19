@@ -5,14 +5,19 @@
 #include <gtkmm.h>
 #include <cassert>
 #include <iostream>
-#include <cstring>
+#include <vector>
 
 template <class T>
 
 class ComboBoxContainer : public Gtk::ComboBoxText {
-        T _container;
-        Gtk::ComboBoxText cbt_vector;   
-        ComboBoxContainer(T container);
-        ~ComboBoxContainer();
+        public:
+        ComboBoxContainer(T container){
+        std::ostringstream ost;
+        for(auto c : container) {
+            ost.str("");
+            ost << *c;
+            append(ost.str());
+        }
+        }
         };    
 #endif
