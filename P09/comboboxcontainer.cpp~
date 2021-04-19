@@ -4,6 +4,7 @@
 #include <sstream>
 
 ComboBoxContainer::ComboBoxContainer(T container):_container{container}{
+        Gtk::ComboBoxText cbt_vector;
         std::ostringstream ost;
         for(auto c : container) {
             ost.str("");

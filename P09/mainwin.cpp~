@@ -244,10 +244,22 @@ Mainwin::Mainwin() {
     button9 = Gtk::manage(new Gtk::ToolButton(*button9_image));
     button9->set_tooltip_markup("all sections available");
     button9->signal_clicked().connect([this] {this->on_new_section_click();});
-    toolbar->append(* button9);  
+    toolbar->append(* button9);      
     
-    
-//   
+//ADDING GRADES //
+Gtk::Image* button10_image = Gtk::manage(new Gtk::Image{"Grades.png"});
+    button10 = Gtk::manage(new Gtk::ToolButton(*button9_image));
+    button10->set_tooltip_markup("All grades of students");
+    button10->signal_clicked().connect([this] {this->on_set_grade_click();});
+    toolbar->append(* button10);
+
+
+//   ADDING TEACHERS //
+Gtk::Image* button11_image = Gtk::manage(new Gtk::Image{"teachers.png"});
+    button11 = Gtk::manage(new Gtk::ToolButton(*button9_image));
+    button11->set_tooltip_markup("All teachers Available");
+    button11->signal_clicked().connect([this] {this->show_data(View::TEACHERS);});
+    toolbar->append(* button11);
     
     // /////////////////////////// ////////////////////////////////////////////
     // D I S P L A Y
@@ -499,7 +511,6 @@ void Mainwin::on_open_click() {
                 while(size--) teachers.push_back(new Teacher{ifs}); 
                 
                 ifs >> size; ifs.ignore(32767, '\n');
-                
                 while(size--) transcripts.push_back(new Transcript{ifs}); 
                            
             }

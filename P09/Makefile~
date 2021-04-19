@@ -9,8 +9,8 @@ debug: smart
 smart: main.o mainwin.o entrydialog.o person.o student.o parent.o section.o course.o subject.o semester.o grade.o transcript.o teacher.o 
 	$(CXX) $(CXXFLAGS) main.o mainwin.o entrydialog.o person.o student.o parent.o section.o course.o subject.o semester.o grade.o transcript.o teacher.o  $(GTKFLAGS) -o smart
 
-test: test.o person.o student.o parent.o section.o course.o subject.o semester.o rade.o transcript.o teacher.o  *.h
-	$(CXX) $(CXXFLAGS) test.o person.o student.o parent.o section.o course.o subject.o semester.o grade.o transcript.o teacher.o $(GTKFLAGS)  -o test
+test: test.o person.o student.o parent.o section.o course.o subject.o semester.o rade.o transcript.o teacher.o   *.h
+	$(CXX) $(CXXFLAGS) test.o person.o student.o parent.o section.o course.o subject.o semester.o grade.o transcript.o teacher.o  $(GTKFLAGS)  -o test
 
 
 main.o: main.cpp *.h
@@ -57,6 +57,8 @@ transcript.o: transcript.cpp *.h
 	
 teacher.o: teacher.cpp *.h
 	$(CXX) $(CXXFLAGS) -c teacher.cpp -o teacher.o 
+	
+
 
 
 

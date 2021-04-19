@@ -56,7 +56,8 @@ class Mainwin : public Gtk::Window {
         Gtk::ToolButton *button7;
         Gtk::ToolButton *button8;
         Gtk::ToolButton *button9;
-    
+        Gtk::ToolButton *button10;
+        Gtk::ToolButton *button11;
     
     protected:
         void on_new_school_click();      // Create a new school
