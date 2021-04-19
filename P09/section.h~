@@ -14,7 +14,7 @@ class Section {
     Teacher _teacher;
   
   public:
-    Section(Course course, Semester semester, int year, Teacher& teacher); // Teacher teacher
+    Section(Course course, Semester semester, int year, Teacher teacher); // Teacher teacher
     Section(std::istream& ist);
     void save(std::ostream& ost);
     friend std::ostream& operator<<(std::ostream& ost, const Section& section);

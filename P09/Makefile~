@@ -60,6 +60,5 @@ teacher.o: teacher.cpp *.h
 
 
 
-
 clean:
 	rm -f *.o *.gch *~ a.out smart 

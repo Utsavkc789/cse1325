@@ -5,7 +5,7 @@
 #include <gtkmm.h>
 #include <cassert>
 
-template<typename T>
+template<class T>
 
 class ComboBoxContainer: public Gtk::ComboBoxText{
     public:

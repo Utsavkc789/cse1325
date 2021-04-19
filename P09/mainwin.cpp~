@@ -499,6 +499,7 @@ void Mainwin::on_open_click() {
                 while(size--) teachers.push_back(new Teacher{ifs}); 
                 
                 ifs >> size; ifs.ignore(32767, '\n');
+                
                 while(size--) transcripts.push_back(new Transcript{ifs}); 
                            
             }
